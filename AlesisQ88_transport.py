@@ -9,8 +9,13 @@ from mididings import *
 
 config(
     client_name = 'Q88 Mackie Transport',
-    # backend = 'jack',
-    in_ports = [('in','Q88 MKII:.*Transport.*')],
+    # Use ALSA Back End
+    # backend = 'alsa',
+    # in_ports = [('in','Q88 MKII:.*Transport.*')],
+
+    # Use Jack back end
+    backend = 'jack',
+    in_ports = [('in','Midi-Bridge:Alesis Q88 MKII.*:.*Transport.*')],
     out_ports = [('Transport')]
 
 )
