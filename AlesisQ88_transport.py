@@ -1,10 +1,9 @@
-# process.py - shows how to process MIDI events in Python
+#! /usr/bin/env python3
+# Convert Alesis Q88 MKII transport codes to more correct Mackie control codes
 #
-# This is a curious little script that inverts the velocity of note-on events.
-# The harder you press the keys, the quieter the sound will become :)
-#
-# Events on channels other than channel 1 are discarded.
-#
+# Set your Q88 keyboard to Mackie Control mode by pressing "Advanced" and then
+# The "DAW"" white key  until the LEDs below "Advanced" are green. Then press the 
+# "Enter" white key.
 
 from mididings import *
 
@@ -12,7 +11,7 @@ config(
     client_name = 'Q88 Mackie Transport',
     # backend = 'jack',
     in_ports = [('in','Q88 MKII:.*Transport.*')],
-    out_ports = [('out')]
+    out_ports = [('Transport')]
 
 )
 
