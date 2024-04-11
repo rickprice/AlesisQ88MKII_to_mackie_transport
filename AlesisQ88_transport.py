@@ -10,9 +10,9 @@ from mididings import *
 
 config(
     client_name = 'Q88 Mackie Transport',
-    backend = 'jack',
-    in_ports = ('in','Q88 MKII:.*Transport.*'),
-    out_ports = ('out')
+    # backend = 'jack',
+    in_ports = [('in','Q88 MKII:.*Transport.*')],
+    out_ports = [('out')]
 
 )
 
