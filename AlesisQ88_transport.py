@@ -12,16 +12,27 @@ config(
     client_name='Q88 Transport to Mackie',
 )
 
-remap_list = { 9 : 11}
+# Stop, Play, Record all seem to work correctly already
+remap_notes = { 
+    # Cursor Up
+    96 : 84,
+    # Cursor Down
+    97 : 85,
+    # Scrub Button
+    100 : 86,
+    # Cursor Left
+    98 : 88,
+    # Cursor Right
+    99 : 89,
+    }
 
 def convert_to_mackie(ev):
+    # If we match, then alter the note
     if ev.channel == 1:
-        if ev.note in remap_list: 
-            ev.note = remap_list[ev.note]
-        return ev
-    else:
-        return ev
-
+        if ev.type in (NOTEON,NOTEOFF):
+            if ev.note in remap_notes: 
+                ev.note = remap_notes[ev.note]
+    return ev
 
 run(Process(convert_to_mackie))
 
