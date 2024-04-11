@@ -8,6 +8,10 @@
 
 from mididings import *
 
+config(
+    client_name='Q88 Transport to Mackie',
+)
+
 def invert(ev):
     if ev.channel == 1:
         if ev.type == NOTEON:
