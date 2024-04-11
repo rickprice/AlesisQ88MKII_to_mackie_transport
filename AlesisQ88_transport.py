@@ -12,14 +12,16 @@ config(
     client_name='Q88 Transport to Mackie',
 )
 
-def invert(ev):
+remap_list = { 9 : 11}
+
+def convert_to_mackie(ev):
     if ev.channel == 1:
-        if ev.type == NOTEON:
-            ev.velocity = 128 - ev.velocity
+        if ev.note in remap_list: 
+            ev.note = remap_list[ev.note]
         return ev
     else:
-        return None
+        return ev
 
 
-run(Process(invert))
+run(Process(convert_to_mackie))
 
