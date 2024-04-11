@@ -9,7 +9,11 @@
 from mididings import *
 
 config(
-    client_name='Q88 Transport to Mackie',
+    client_name = 'Q88 Mackie Transport',
+    backend = 'jack',
+    in_ports = ('in','Q88 MKII:.*Transport.*'),
+    out_ports = ('out')
+
 )
 
 # Stop, Play, Record all seem to work correctly already
